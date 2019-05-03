@@ -23,6 +23,13 @@ describe 'iv'
         normal dij
         Expect getline(1) == 'foo () bar'
     end
+
+    it 'selects the innermost container'
+        put! = 'foo {[(1, 2, 3)]} bar'
+        normal! 9|
+        normal dij
+        Expect getline(1) == 'foo {[()]} bar'
+    end
 end
 
 
@@ -46,5 +53,12 @@ describe 'av'
         normal! 9|
         normal daj
         Expect getline(1) == 'foo  bar'
+    end
+
+    it 'selects the innermost container'
+        put! = 'foo {[(1, 2, 3)]} bar'
+        normal! 9|
+        normal daj
+        Expect getline(1) == 'foo {[]} bar'
     end
 end
