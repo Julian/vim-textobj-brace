@@ -61,4 +61,11 @@ describe 'av'
         normal daj
         Expect getline(1) == 'foo {[]} bar'
     end
+
+    it 'selects the counted number of containers'
+        put! = 'foo [{[(1, 2, 3)]}] bar'
+        normal! 9|
+        normal d3aj
+        Expect getline(1) == 'foo [] bar'
+    end
 end
